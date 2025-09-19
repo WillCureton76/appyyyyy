@@ -1,7 +1,8 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
-COPY package.json package-lock.json* pnpm-lock.yaml* yarn.lock* ./ 2>/dev/null || true
-RUN npm ci --omit=dev || npm ci
+COPY package.json ./
+COPY package-lock.json* ./
+RUN npm ci --omit=dev || npm install --omit=dev
 
 FROM node:20-alpine AS builder
 WORKDIR /app
