@@ -8,9 +8,7 @@ export type ToolSpec = {
   title: string;
   description: string;
   inputSchema: ZodTypeAny;
-  handler: (args: any) => Promise<CallToolOutput>;
-};
-
+handler: (args: any) => Promise<CallToolResult>;};
 export abstract class Provider {
   readonly name: string;
   protected tools: ToolSpec[] = [];
